@@ -1,2 +1,18 @@
 create database task_1;
 use task_1;
+
+ create table covid_data
+    > (
+    > country string,
+    > confirmed int,
+    > death int,
+    > recovered int,
+    > active int,
+    > newcase int,
+    > newdeath int,
+    > newrecovered int,
+    > confirmedlastweek int,
+    > whoregion string
+    > )
+    > row format delimited
+    > fields terminated by ',';
