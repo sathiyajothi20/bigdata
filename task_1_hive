@@ -16,3 +16,63 @@ use task_1;
     > )
     > row format delimited
     > fields terminated by ',';
+
+describe covid_data;
+describe formatted covid_data;
+
+#for data load from local
+load data local inpath 'file:///home/cloudera/Downloads/task_1.csv' into table covid_data;
+
+set hive.cli.print.header=true;
+
+#for data load from local to hdfs
+hadoop fs -copyFromLocal /home/cloudera/Downloads/task_1.csv /tmp/task_1
+#put the file from local to hdfs
+hadoop fs -put /home/cloudera/Downloads/task_1.csv /tmp/hive/task_1.csv
+#remove unwanted directory
+hadoop fs -rmr /tmp/hive/hive
+
+
+
+hdfs://quickstart.cloudera:8020/user/hive/warehouse/task_1.db/covid_data
+
+create table covid_data_from_hdfs
+     (
+     country string,
+     confirmed int,
+     death int,
+     recovered int,
+     active int,
+     newcase int,
+     newdeath int,
+     newrecovered int,
+     confirmedlastweek int,
+     whoregion string
+     )
+     row format delimited
+     fields terminated by ',';
+     
+     #load data from hdfs location
+     load data inpath '/tmp/task_1' into table covid_data_from_hdfs;
+
+
+# external
+create external table covid_data_external_table
+    >      (
+    >      country string,
+    >      confirmed int,
+    >      death int,
+    >      recovered int,
+    >      active int,
+    >      newcase int,
+    >      newdeath int,
+    >      newrecovered int,
+    >      confirmedlastweek int,
+    >      whoregion string
+    >      )
+    >      row format delimited
+    >      fields terminated by ','
+    >      location '/tmp/hive/hive_external/';
+
+     
+     
