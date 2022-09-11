@@ -28,3 +28,6 @@ create table sales_order_data
     > )
     > row format delimited
     >      fields terminated by ',';
+
+#load the data into table from hdfs location
+load data inpath '/tmp/hive/sales_order_data.csv' into table sales_order_data;
