@@ -64,3 +64,8 @@ load data inpath '/tmp/hive/sales_order_data.csv' into table sales_order_data;
     
     #copy the data from table to orctable
     from sales_order_data  insert overwrite table sales_order_orc select *;
+
+Perform below menioned queries on "sales_order_orc" table :
+
+a. Calculatye total sales per year
+SELECT year_id, SUM(sales) FROM sales_order_orc GROUP BY year_id;
