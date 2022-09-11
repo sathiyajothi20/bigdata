@@ -1,0 +1,2 @@
+#put the downloaded file to hdfs location
+hadoop fs -put /home/cloudera/Downloads/sales_order_data.csv /tmp/hive/sales_order_data.csv
