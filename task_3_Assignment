@@ -31,3 +31,36 @@ create table sales_order_data
 
 #load the data into table from hdfs location
 load data inpath '/tmp/hive/sales_order_data.csv' into table sales_order_data;
+
+
+# create table as orc format
+ create table sales_order_orc
+    > (
+    > ORDERNUMBER int,
+    >      QUANTITYORDERED int,
+    >      PRICEEACH float,
+    >      ORDERLINENUMBER int,
+    >      SALES float,
+    >      STATUS string,
+    >      QTR_ID int,
+    >      MONTH_ID int,
+    >      YEAR_ID int,
+    >      PRODUCTLINE string,
+    >      MSRP int,
+    >      PRODUCTCODE string,
+    >      PHONE string,
+    >      CITY string, 
+    >      STATE string, 
+    >      POSTALCODE string,
+    >      COUNTRY string,
+    >      TERRITORY string,  
+    >      CONTACTLASTNAME string, 
+    >      CONTACTFIRSTNAME string,
+    >      DEALSIZE string 
+    > )
+    > row format delimited
+    > fields terminated by ','
+    >  STORED AS ORC;
+    
+    #copy the data from table to orctable
+    from sales_order_data  insert overwrite table sales_order_orc select *;
