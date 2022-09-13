@@ -86,6 +86,7 @@ select sum(sales),qtr_id from sales_order_orc group by qtr_id;
 3874780.010925293	4
 
 
+d. In which quarter sales was minimum
 
 
 
