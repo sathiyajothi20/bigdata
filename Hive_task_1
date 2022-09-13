@@ -78,6 +78,13 @@ b. Find a product for which maximum orders were placed
 select sum(QUANTITYORDERED),PRODUCTLINE from sales_order_orc group by productline;
   33992	Classic Cars
 
+c. Calculate the total sales for each quarter
+select sum(sales),qtr_id from sales_order_orc group by qtr_id;
+  2350817.726501465	1
+2048120.3029174805	2
+1758910.808959961	3
+3874780.010925293	4
+
 
 
 
