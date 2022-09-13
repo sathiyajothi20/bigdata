@@ -69,3 +69,17 @@ Perform below menioned queries on "sales_order_orc" table :
 
 a. Calculatye total sales per year
 SELECT year_id, SUM(sales) FROM sales_order_orc GROUP BY year_id;
+2003	3516979.547241211
+2004	4724162.593383789
+2005	1791486.7086791992
+
+
+b. Find a product for which maximum orders were placed
+select sum(QUANTITYORDERED),PRODUCTLINE from sales_order_orc group by productline;
+  33992	Classic Cars
+
+
+
+
+
+
