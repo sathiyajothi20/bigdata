@@ -27,7 +27,8 @@ create table sales_order_data
     >      DEALSIZE string 
     > )
     > row format delimited
-    > fields terminated by ',';
+    > fields terminated by ','
+    > TBLPROPERTIES ("skip.header.line.count"="1");
 
 #load the data into table from hdfs location
 load data inpath '/tmp/hive/sales_order_data.csv' into table sales_order_data;
