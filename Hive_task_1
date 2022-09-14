@@ -287,7 +287,7 @@ NULL	CITY	NULL
 85555.98962402344	White Plains	4
 
 h. Find a month for each year in which maximum number of quantities were sold
-hive> select sum(quantityordered)as qty,month_id,year_id from sales_order_orc group by year_id,month_id  order by qty desc;
+select max(qty) ,month_id,year_id from (select  sum(QUANTITYORDERED) as qty,year_id,month_id from sales_order_data group by year_id,month_id order by qty desc ) group by year_id  ;
   10678	11	2004
   10179	11	2003
   4357	5	2005
