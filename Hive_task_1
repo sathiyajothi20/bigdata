@@ -90,6 +90,13 @@ d. In which quarter sales was minimum
 hive> select qtr_id,sum(sales) as sales from sales_order_orc group by qtr_id order by sales  limit 1;
 3	1758910.808959961
 
+e. In which country sales was maximum and in which country sales was minimum
+
+hive> select sum(sales)as sales,country from sales_order_orc group by country order by sales desc limit 1 ;
+3627982.825744629	USA
+
+hive> select sum(sales)as sales,country from sales_order_orc group by country order by sales asc limit 1;
+57756.43029785156	Ireland
 
 
 
