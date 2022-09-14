@@ -87,6 +87,8 @@ select sum(sales),qtr_id from sales_order_orc group by qtr_id;
 
 
 d. In which quarter sales was minimum
+hive> select qtr_id,sum(sales) as sales from sales_order_orc group by qtr_id order by sales  limit 1;
+3	1758910.808959961
 
 
 
