@@ -286,8 +286,25 @@ NULL	CITY	NULL
 85555.98962402344	White Plains	4
 
 h. Find a month for each year in which maximum number of quantities were sold
-select max(qty) ,month_id,year_id from (select  sum(QUANTITYORDERED) as qty,year_id,month_id from sales_order_data group by year_id,month_id order by qty desc ) group by year_id  ;
-  10678	11	2004
-  10179	11	2003
-  4357	5	2005
+select year_id,
+       month_id, 
+       total_sale
+ 
+from
+(   select  year_id,
+            month_id,
+            total_sale,dense_rank() over (partition by year_id order by total_sale desc) as rank
+    from (  select  YEAR_ID,
+                    month_id,
+                    sum(sales) as total_sale
+            from sales_order_orc 
+            group by YEAR_ID,
+                  month_id
+          ) table_1
+) table_1
+where rank = 1; 
+2003	11	1029837.6627197266
+2004	11	1089048.0076293945
+2005	5	457861.06036376953
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------
