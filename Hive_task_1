@@ -1,6 +1,6 @@
 #put the downloaded file to hdfs location
 hadoop fs -put /home/cloudera/Downloads/sales_order_data.csv /tmp/hive/sales_order_data.csv
-
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #create table 
 create table sales_order_data
     > (
@@ -29,9 +29,11 @@ create table sales_order_data
     > row format delimited
     > fields terminated by ','
     > TBLPROPERTIES ("skip.header.line.count"="1");
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #load the data into table from hdfs location
 load data inpath '/tmp/hive/sales_order_data.csv' into table sales_order_data;
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 # create table as orc format
@@ -65,6 +67,7 @@ load data inpath '/tmp/hive/sales_order_data.csv' into table sales_order_data;
     
     #copy the data from table to orctable
     from sales_order_data  insert overwrite table sales_order_orc select *;
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Perform below menioned queries on "sales_order_orc" table :
 
@@ -73,11 +76,13 @@ SELECT year_id, SUM(sales) FROM sales_order_orc GROUP BY year_id;
 2003	3516979.547241211
 2004	4724162.593383789
 2005	1791486.7086791992
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 b. Find a product for which maximum orders were placed
 select sum(QUANTITYORDERED),PRODUCTLINE from sales_order_orc group by productline limit 1;
   33992	Classic Cars
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 c. Calculate the total sales for each quarter
 select sum(sales),qtr_id from sales_order_orc group by qtr_id;
@@ -86,10 +91,12 @@ select sum(sales),qtr_id from sales_order_orc group by qtr_id;
 1758910.808959961	3
 3874780.010925293	4
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 d. In which quarter sales was minimum
 hive> select qtr_id,sum(sales) as sales from sales_order_orc group by qtr_id order by sales  limit 1;
 3	1758910.808959961
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 e. In which country sales was maximum and in which country sales was minimum
 hive> select sum(sales)as sales,country from sales_order_orc group by country order by sales desc limit 1 union all
@@ -97,6 +104,7 @@ select sum(sales)as sales,country from sales_order_orc group by country order by
 
 3627982.825744629	USA
 57756.43029785156	Ireland
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 f. Calculate quartelry sales for each city
@@ -284,6 +292,7 @@ NULL	CITY	NULL
 5759.419921875	Versailles	1
 59074.90026855469	Versailles	4
 85555.98962402344	White Plains	4
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 h. Find a month for each year in which maximum number of quantities were sold
 select year_id,
