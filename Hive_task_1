@@ -76,7 +76,7 @@ SELECT year_id, SUM(sales) FROM sales_order_orc GROUP BY year_id;
 
 
 b. Find a product for which maximum orders were placed
-select sum(QUANTITYORDERED),PRODUCTLINE from sales_order_orc group by productline;
+select sum(QUANTITYORDERED),PRODUCTLINE from sales_order_orc group by productline limit 1;
   33992	Classic Cars
 
 c. Calculate the total sales for each quarter
