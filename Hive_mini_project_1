@@ -30,3 +30,7 @@
     hdfs dfs -put /home/cloudera/Downloads/AgentLogingReport.csv /tmp/hive/project1
     
     hdfs dfs -put /home/cloudera/Downloads/AgentPerformance.csv /tmp/hive/project1a/ 
+
+4.
+select AVG(Average_Rating) from AgentPerformance;
+1.4609629649255012
