@@ -10,10 +10,23 @@
     >      row format delimited
     >      fields terminated by ','
     >      location '/tmp/hive/project1/';
+    
+ create external table AgentPerformance(
+  Sl_No int,
+  Date string,
+  Agent string,
+  Total_chats int,
+  Average_Response_time string,
+  Average_resolution_time string,
+  Average_Rating float,
+  Total_Feedback int
+   )
+   row format delimited
+     fields terminated by ','
+     location '/tmp/hive/project1a/
 
 
      
     hdfs dfs -put /home/cloudera/Downloads/AgentLogingReport.csv /tmp/hive/project1
     
-    select Agent from AgentLogingReport;
-
+    hdfs dfs -put /home/cloudera/Downloads/AgentPerformance.csv /tmp/hive/project1a/ 
