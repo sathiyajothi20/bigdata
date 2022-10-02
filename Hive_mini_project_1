@@ -41,6 +41,6 @@ hive> select agent from AgentPerformance;select Agent Name from AgentLogingRepor
 hive> select AVG(Average_Rating) from AgentPerformance where Average_Rating !=0;
 4.316935710313382
 
-    
+5. Total working days for each agents 
 
 
