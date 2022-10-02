@@ -11,19 +11,19 @@
           fields terminated by ','
           location '/tmp/hive/project1/';
     
- create external table AgentPerformance(
+create external table AgentPerformance(
   Sl_No int,
-  Date string,
+  Date Date,
   Agent string,
   Total_chats int,
-  Average_Response_time string,
-  Average_resolution_time string,
+  Average_Response_time timestamp,
+  Average_resolution_time timestamp,
   Average_Rating float,
   Total_Feedback int
    )
    row format delimited
      fields terminated by ','
-     location '/tmp/hive/project1a/
+     location '/tmp/hive/project1aa/';
 
 
      
