@@ -1,15 +1,15 @@
 1. Create a schema based on the given dataset
  create external  table AgentLogingReport(
-    >      Sl_No int,
-    >      Agent string,
-    >      date Date,
-    >      LoginTime string,
-    >      LogoutTime string,
-    >      Duration string
-    >      )
-    >      row format delimited
-    >      fields terminated by ','
-    >      location '/tmp/hive/project1/';
+          Sl_No int,
+          Agent string,
+          date Date,
+          LoginTime timestamp,
+          LogoutTime timestamp,
+          Duration timestamp
+          )
+          row format delimited
+          fields terminated by ','
+          location '/tmp/hive/project1/';
     
  create external table AgentPerformance(
   Sl_No int,
