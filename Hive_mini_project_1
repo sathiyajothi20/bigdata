@@ -32,6 +32,9 @@ load data local inpath 'file:///home/cloudera/Downloads/AgentLogingReport.csv' i
     hdfs dfs -put /home/cloudera/Downloads/AgentLogingReport.csv /tmp/hive/project1
     
     hdfs dfs -put /home/cloudera/Downloads/AgentPerformance.csv /tmp/hive/project1a/ 
+    
+ hive> select agent from AgentPerformance;select Agent Name from AgentLogingReport;
+
 
 4.
 select AVG(Average_Rating) from AgentPerformance;
