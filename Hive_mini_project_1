@@ -1,5 +1,5 @@
 1. Create a schema based on the given dataset
- create external  table AgentLogingReport(
+ create table AgentLogingReport(
           Sl_No int,
           Agent string,
           date Date,
@@ -9,9 +9,9 @@
           )
           row format delimited
           fields terminated by ','
-          location '/tmp/hive/project1/';
+          TBLPROPERTIES ("skip.header.line.count"="1");
     
-create external table AgentPerformance(
+create table AgentPerformance(
   Sl_No int,
   Date Date,
   Agent string,
@@ -23,7 +23,7 @@ create external table AgentPerformance(
    )
    row format delimited
      fields terminated by ','
-     location '/tmp/hive/project1aa/';
+     TBLPROPERTIES ("skip.header.line.count"="1");
 
 
      
