@@ -25,6 +25,8 @@ create table AgentPerformance(
      fields terminated by ','
      TBLPROPERTIES ("skip.header.line.count"="1");
 
+load data local inpath 'file:///home/cloudera/Downloads/Agentperformance.csv' into table Agentperformance;
+load data local inpath 'file:///home/cloudera/Downloads/AgentLogingReport.csv' into table AgentLogingReport;
 
      
     hdfs dfs -put /home/cloudera/Downloads/AgentLogingReport.csv /tmp/hive/project1
